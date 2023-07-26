@@ -1,0 +1,83 @@
+.offcanvas.show {
+    background-image: linear-gradient(0deg,#92a4f5,#ffffff9a);
+
+}
+.drawerLink{
+    font-size: 18px;
+    font-size: 300;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    color: black;
+    transition: background-color 0.5s ease;
+    padding: 5px;
+    border-radius: 5px;    
+}
+.drawerlinkcom{
+    background-color: #92a4f5;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+}
+.drawerlinkcom:hover{
+    background-color: aquamarine;
+}
+
+/* logout */
+.logouts{
+    height: 90vh;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+
+
+}
+.logout{
+     background-color: aquamarine;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     gap: 50px;
+     padding: 20px;
+     border-radius: 10px;
+}
+.buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 25vw;
+}
+.ok{
+    color: red;
+    height: 50px;
+    width: 80px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+.cancel{
+    color: green;
+    height: 50px;
+    width: 80px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.h1{
+    width: 25vw;
+    text-align: center;
+    
+}
+
+
+@media screen and (max-width: 600px){
+    .offcanvas-start {
+        width: 240px;
+    }
+    
+}

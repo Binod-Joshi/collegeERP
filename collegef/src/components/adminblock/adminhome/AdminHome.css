@@ -1,0 +1,23 @@
+.adminhome{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.adminImg>img{
+    margin-top: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 30%;
+}
+.adminName{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.aDrawer{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+}
