@@ -45,6 +45,9 @@ const studentSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    verifytoken: { //for password resetting process
+        type: String,
+    },
     examResult: [
         {
             teacher: {

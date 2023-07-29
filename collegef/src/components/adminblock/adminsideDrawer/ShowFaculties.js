@@ -76,7 +76,7 @@ const ShowStudents = () => {
     <>
     {!loading? <>
     { !deleteComponent && <TableContainer component={Paper} >
-      <Table sx={{ minWidth: 700 }} aria-label="customized table" style={{marginTop:"50px"}}>
+      <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Course</StyledTableCell>

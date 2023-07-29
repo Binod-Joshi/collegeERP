@@ -48,7 +48,7 @@ const AllSubjectMarkS = ({markOfStudentList}) => {
   return (
 
         <>
-          <TableContainer component={Paper} style={{marginTop:"50px"}}>
+          <TableContainer component={Paper} >
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>
                 <TableRow>

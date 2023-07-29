@@ -71,7 +71,7 @@ const FacultyCourse = () => {
   return (
     <>
     { !loading? <>
-      <div className="courseDetail" style={{marginTop:"50px"}}>
+      <div className="courseDetail" >
         <h1>Course Detail</h1>
         <h2>
           Course:{course}, Branch:{branch}, Year:{year}, Semester:{semester},

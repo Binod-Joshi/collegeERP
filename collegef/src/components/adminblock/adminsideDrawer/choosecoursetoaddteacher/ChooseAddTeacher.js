@@ -66,7 +66,7 @@ const ChooseAddTeacher = ({courseId}) => {
   }, [status]);
 
   return (
-    <div className="addStudent" style={{marginTop:"70px"}}>
+    <div className="addStudent" style={{marginTop:"20px"}}>
       {addedTeacher && <AddedSucessfull />}
       <div className="insideAddStudent">
         <span className="loginTitle">Register Teacher</span>

@@ -87,7 +87,7 @@ useEffect(() => {
   console.log(response)
 
   return (
-    <div className="addStudent" style={{marginTop:'70px'}}>
+    <div className="addStudent" style={{marginTop:'20px'}}>
         {addedStudent && <AddedSucessfull />}
       <div className="insideAddStudent">
         <span className="loginTitle">Register Student</span>

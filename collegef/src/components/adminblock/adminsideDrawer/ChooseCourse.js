@@ -63,7 +63,7 @@ const ChooseCourse = () => {
 
   return (
     <>
-    {!loading? <TableContainer component={Paper} style={{marginTop:'50px'}}>
+    {!loading? <TableContainer component={Paper}>
     <Table sx={{ minWidth: 700 }} aria-label="customized table">
       <TableHead>
         <TableRow>

@@ -4,7 +4,7 @@ const FacultyProfile = () => {
   const {currentUser} = useSelector((state) => state.user);
   
   return (
-    <div className="adminhome" style={{marginTop:"5opx"}}>
+    <div className="adminhome">
       <h1>Teacher</h1>
       <div>
 <div className="adminImg">

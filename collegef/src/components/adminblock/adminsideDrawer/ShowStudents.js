@@ -98,7 +98,7 @@ const viewHandler = (e,id) => {
   return (
     <>
     {!loading?<>
-    {!deleteComponent && <TableContainer component={Paper} style={{marginTop:'50px'}}>
+    {!deleteComponent && <TableContainer component={Paper} >
       <Table stickyHeader aria-label="sticky table">
         <TableHead>
           <TableRow>

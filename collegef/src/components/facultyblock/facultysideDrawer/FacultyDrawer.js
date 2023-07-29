@@ -132,7 +132,8 @@ const AdminDrawer = () => {
           </List>
         </Drawer>
 
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Box component="main" sx={styles.boxStyled}>
+          <Toolbar />
           <Routes>
             <Route path="/" element={<FacultyHome />} />
             <Route path="/teacherhome" element={<FacultyHome />} />

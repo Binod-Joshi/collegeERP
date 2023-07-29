@@ -6,7 +6,7 @@ const StudentProfile = () => {
   const {currentUser} = useSelector(state => state.user);
   return (
     <>
-    <div className="studenthome" style={{marginTop:"50px"}}>
+    <div className="studenthome courseDetail" >
       <h1>Student</h1>
       <div>
         <div className="studentImg">

@@ -4,7 +4,17 @@ const bcrypt = require("bcrypt");
 const generateToken = require("./generateToken");
 const Student = require("../models/Student");
 const { jwtProtect } = require("../middleware/authMiddleware");
-const Teacher = require("../models/Teacher")
+const Teacher = require("../models/Teacher");
+const nodemailer = require("nodemailer");
+const jwt = require("jsonwebtoken");
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD, // hamra case mai google walo password enter gaddo ho
+  },
+});
 
 // auth for admin
 router.post("/registerAdmin", async (req, res) => {
@@ -88,16 +98,17 @@ router.post("/registerStudent", jwtProtect, async (req, res) => {
     });
 
     const existingStudentByRollNum = await Student.findOne({
-      rollNo: req.body.rollNo,collegename:req.user.id
+      rollNo: req.body.rollNo,
+      collegename: req.user.id,
     });
     const existingStudentByEmail = await Student.findOne({
-      email: req.body.email
+      email: req.body.email,
     });
 
     if (existingStudentByRollNum) {
-      res.send({message: "Roll Number already exists."});
+      res.send({ message: "Roll Number already exists." });
     } else if (existingStudentByEmail) {
-      res.send({message: "Student with this email id exist."});
+      res.send({ message: "Student with this email id exist." });
     } else {
       let result = await student.save();
 
@@ -112,62 +123,58 @@ router.post("/registerStudent", jwtProtect, async (req, res) => {
 // login student
 router.post("/loginStudent", async (req, res) => {
   try {
-    const{email,password} =req.body;
-  if(req.body.email && req.body.password){
-    let student = await Student.findOne({email}).populate("collegename");
-    if (student) {
-       const validated = await bcrypt.compare(password, student.password);
-       if(validated){
-        res.send({
-          _id: student._id,
-          username: student.username,
-          rollNo:student.rollNo,
-          collegename: student.collegename.collegename,
-          collegeid: student.collegename._id,
-          course:student.course,
-          branch:student.branch,
-          year:student.year,
-          semester:student.semester,
-          section:student.section,
-          email: student.email,
-          role: student.role,
-          profileDP: student?.profileDP,
-          token: generateToken(student._id),
-        });
-       } else {
-        res.send({ message:"Invalid password"})
-       }
-    }else {
-      res.send({ message: "User not found"});
+    const { email, password } = req.body;
+    if (req.body.email && req.body.password) {
+      let student = await Student.findOne({ email }).populate("collegename");
+      if (student) {
+        const validated = await bcrypt.compare(password, student.password);
+        if (validated) {
+          res.send({
+            _id: student._id,
+            username: student.username,
+            rollNo: student.rollNo,
+            collegename: student.collegename.collegename,
+            collegeid: student.collegename._id,
+            course: student.course,
+            branch: student.branch,
+            year: student.year,
+            semester: student.semester,
+            section: student.section,
+            email: student.email,
+            role: student.role,
+            profileDP: student?.profileDP,
+            token: generateToken(student._id),
+          });
+        } else {
+          res.send({ message: "Invalid password" });
+        }
+      } else {
+        res.send({ message: "User not found" });
+      }
+    } else {
+      res.send({ message: "email and password are required" });
     }
-    }else{
-      res.send({message:"email and password are required"});
-    }
-   }catch (error) {
+  } catch (error) {
     res.status(500).json(error);
   }
 });
 
-
-
 // auth for teachers
-router.post("/registerTeacher",jwtProtect, async (req, res) => {
+router.post("/registerTeacher", jwtProtect, async (req, res) => {
   try {
     const salt = await bcrypt.genSalt(10);
-    const hashedPass = await bcrypt.hash(req.body.password,salt);
+    const hashedPass = await bcrypt.hash(req.body.password, salt);
     const teacher = new Teacher({
       ...req.body,
-      collegename:req.user.id,
-      password:hashedPass
-    })
-    const existingTeacherByEmail = await Teacher.findOne({
-      email: req.body.email
+      collegename: req.user.id,
+      password: hashedPass,
     });
-    if(existingTeacherByEmail){
-      console.log("email already exist");
-      res.send({message:"teacher with same email already exist"})
-     
-    }else {
+    const existingTeacherByEmail = await Teacher.findOne({
+      email: req.body.email,
+    });
+    if (existingTeacherByEmail) {
+      res.send({ message: "teacher with same email already exist" });
+    } else {
       let result = await teacher.save();
       result.password = undefined;
       res.send(result);
@@ -179,47 +186,166 @@ router.post("/registerTeacher",jwtProtect, async (req, res) => {
 
 router.post("/loginTeacher", async (req, res) => {
   try {
-    // console.log("loginTeacher");
-    const{email,password} =req.body;
-  if(req.body.email && req.body.password){
-    console.log(email,password);
-    let teacher = await Teacher.findOne({email});
-    // console.log(teacher);
-    teacher = await Teacher.populate(teacher, "course");
-    // console.log(teacher);
-    teacher = await Teacher.populate(teacher, "collegename");
-    // console.log(teacher);
-    if (teacher) {
-       const validated = await bcrypt.compare(password, teacher.password);
-       if(validated){
-        res.send({
-          _id: teacher._id,
-          username: teacher.username,
-          collegename: teacher.collegename.collegename,
-          collegeid: teacher.collegename._id,
-          course:teacher.course.course,
-          branch:teacher.course.branch,
-          year:teacher.course.year,
-          semester:teacher.course.semester,
-          section:teacher.course.section,
-          email: teacher.email,
-          role: teacher.role,
-          subject:teacher.subject,
-          admin:teacher.collegename.username,
-          profileDP: teacher?.profileDP,
-          token: generateToken(teacher._id),
-        });
-       } else {
-        res.send({ message:"Invalid password"})
-       }
-    }else {
-      res.send({ message: "User not found"});
+    const { email, password } = req.body;
+    if (req.body.email && req.body.password) {
+      let teacher = await Teacher.findOne({ email });
+      teacher = await Teacher.populate(teacher, "course");
+      teacher = await Teacher.populate(teacher, "collegename");
+      if (teacher) {
+        const validated = await bcrypt.compare(password, teacher.password);
+        if (validated) {
+          res.send({
+            _id: teacher._id,
+            username: teacher.username,
+            collegename: teacher.collegename.collegename,
+            collegeid: teacher.collegename._id,
+            course: teacher.course.course,
+            branch: teacher.course.branch,
+            year: teacher.course.year,
+            semester: teacher.course.semester,
+            section: teacher.course.section,
+            email: teacher.email,
+            role: teacher.role,
+            subject: teacher.subject,
+            admin: teacher.collegename.username,
+            profileDP: teacher?.profileDP,
+            token: generateToken(teacher._id),
+          });
+        } else {
+          res.send({ message: "Invalid password" });
+        }
+      } else {
+        res.send({ message: "User not found" });
+      }
+    } else {
+      res.send({ message: "email and password are required" });
     }
-    }else{
-      res.send({message:"email and password are required"});
-    }
-   }catch (error) {
+  } catch (error) {
     res.status(500).json(error);
   }
 });
+
+// for resetting the password
+router.post("/resetpassword", async (req, res) => {
+  try {
+    const { email, role } = req.body;
+    let emailExist;
+    if (role === "Admin") {
+      emailExist = await Admin.findOne({ email });
+    } else if (role === "Teacher") {
+      emailExist = await Teacher.findOne({ email });
+    } else if (role === "Student") {
+      emailExist = await Student.findOne({ email });
+    }
+
+    if (emailExist) {
+      const token = jwt.sign({ _id: emailExist._id }, process.env.JWT_SECRET, {
+        expiresIn: "120s",
+      });
+      let setUserToken;
+      if (role === "Admin") {
+        setUserToken = await Admin.findByIdAndUpdate(
+          { _id: emailExist._id },
+          { verifytoken: token },
+          { new: true }
+        );
+      } else if (role === "Teacher") {
+        setUserToken = await Teacher.findByIdAndUpdate(
+          { _id: emailExist._id },
+          { verifytoken: token },
+          { new: true }
+        );
+      } else if (role === "Student") {
+        setUserToken = await Student.findByIdAndUpdate(
+          { _id: emailExist._id },
+          { verifytoken: token },
+          { new: true }
+        );
+      }
+      if (setUserToken) {
+        const mailOptions = {
+          from: process.env.EMAIL,
+          to: email,
+          subject: "Sending Email for password reset.",
+          text: `This link valid for 2 minutes http://localhost:3000/forgetpassword/${emailExist._id}/${setUserToken.verifytoken}/${role}`,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            res.status(401).send({ status: 401, message: "Email not send." });
+          } else {
+            res
+              .status(200)
+              .send({ status: 200, message: "Email sent sucessfully." });
+          }
+        });
+      }
+    } else {
+      res.status(200).send({ message: "email doesn't exist." });
+    }
+  } catch (error) {
+    res.send({ message: "error occured" });
+  }
+});
+
+router.get("/forgetpassword/:id/:token/:role", async (req, res) => {
+  //for checking or validing user and token
+  try {
+    const { id, token,role } = req.params;
+
+    let validUser;
+    if (role === "Admin") {
+      validUser = await Admin.findOne({ _id: id, verifytoken: token });
+    } else if (role === "Teacher") {
+      validUser = await Teacher.findOne({ _id: id, verifytoken: token });
+    } else if (role === "Student") {
+      validUser = await Student.findOne({ _id: id, verifytoken: token });
+    }
+    const verifyToken = jwt.verify(token, process.env.JWT_SECRET); //for checking token is expired or not
+    
+    if (validUser && verifyToken._id) {
+      res.status(201).send({ status: 201, validUser });
+    } else {
+      res.status(401).send({ status: 401, message: "user not exist" });
+    }
+  } catch (error) {
+    res.status(404).send(error);
+  }
+});
+
+router.post("/sendingnew/:id/:token/:role", async (req, res) => {
+  try {
+    const { id, token, role } = req.params;
+    const { password } = req.body;
+    let validUser;
+    if (role === "Admin") {
+      validUser = await Admin.findOne({ _id: id, verifytoken: token });
+    } else if (role === "Teacher") {
+      validUser = await Teacher.findOne({ _id: id, verifytoken: token });
+    } else if (role === "Student") {
+      validUser = await Student.findOne({ _id: id, verifytoken: token });
+    }
+
+    const verifyToken = jwt.verify(token, process.env.JWT_SECRET); //for checking token is expired or not
+    if (validUser && verifyToken._id) {
+      const salt = await bcrypt.genSalt(10);
+      const hashedpass = await bcrypt.hash(password, salt);
+      let result;
+
+      if (role === "Admin") {
+        result = await Admin.findByIdAndUpdate(id, { password: hashedpass });
+      } else if (role === "Teacher") {
+        result = await Teacher.findByIdAndUpdate(id, { password: hashedpass });
+      } else if (role === "Student") {
+        result = await Student.findByIdAndUpdate(id, { password: hashedpass });
+      }
+      res.status(201).send({ status: 201, result });
+    } else {
+      res.status(401).send({ status: 401, message: "user not exist" });
+    }
+  } catch (error) {
+    res.status(404).send(error);
+  }
+});
+
 module.exports = router;

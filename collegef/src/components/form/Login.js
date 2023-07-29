@@ -143,7 +143,7 @@ const Login = ({role}) => {
                           control={<Checkbox value="remember" color="primary" />}
                           label="Remember me"
                       />
-                      <StyledLink href="#">
+                      <StyledLink to={`/resetpassword/${role}`}>
                           Forgot password?
                       </StyledLink>
                   </Grid>

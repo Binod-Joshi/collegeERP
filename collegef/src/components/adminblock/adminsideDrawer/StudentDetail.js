@@ -27,7 +27,7 @@ const StudentDetail = () => {
   return (
     <> { !loading ?(
     <div>
-    <h1 className='courseDetail' style={{ marginTop:"50px"}}>Student Attendance.</h1>
+    <h1 className='courseDetail' >Student Attendance.</h1>
     {attendanceOfStudentList?.length > 0 ? <AllSubjectAttendanceS attendanceOfStudentList= {attendanceOfStudentList} />: <div style={{marginTop:"50px"}} className='courseDetail'>
     The attendance for this student has not been added by the teacher yet.
     </div>}

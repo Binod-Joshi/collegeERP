@@ -51,7 +51,7 @@ const Attendance = () => {
   console.log(loading);
   return (
     <>
-    { !loading? <div style={{marginTop:"50px"}}>
+    { !loading? <div >
       <ThemeProvider theme={defaultTheme}  >
         <Container component="main" maxWidth="xs">
           <CssBaseline />

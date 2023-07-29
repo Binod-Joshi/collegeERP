@@ -78,7 +78,7 @@ console.log(loading);
   return (
     <>
     {!loading? <>
-      { !deleteComponent && <Box  style={{ marginTop:"70px"}}>
+      { !deleteComponent && <Box >
       <TableContainer component={Paper} >
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>

@@ -88,7 +88,7 @@ const ParticularCourseStudents = () => {
 
   return (
     <>
-    {!deleteComponent && <div style={{marginTop:'50px'}}>
+    {!deleteComponent && <div >
       <div className="courseDetail">
         <h1>Course Detail</h1>
         <h2>

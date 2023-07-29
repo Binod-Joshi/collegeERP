@@ -31,7 +31,14 @@ const teacherSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Admin",
         required:true,
+    },
+    verifytoken: { //for password resetting process
+        type: String,
     }
-});
+},
+{
+    timestamps:true
+},
+);
 
 module.exports = new mongoose.model("Teacher",teacherSchema);

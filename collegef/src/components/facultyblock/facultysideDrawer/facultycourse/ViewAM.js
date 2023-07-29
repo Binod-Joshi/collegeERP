@@ -75,7 +75,7 @@ const ViewAM = () => {
   return (
     <>
     { !loading? <>
-      <TableContainer component={Paper} style={{marginTop:"50px"}}>
+      <TableContainer component={Paper} >
         <div className="courseDetail">
           <h2>Attendance:</h2>
         </div>

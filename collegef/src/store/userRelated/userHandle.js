@@ -19,6 +19,7 @@ import {
   authSucessForStudentM,
   authSucessForStudentTeachers,
   authSuccessForNotice,
+  
 } from "./userSlice";
 
 export const loginUser = (fields, role) => async (dispatch) => {
@@ -62,6 +63,28 @@ export const registerUser = (fields, currentUser) => async (dispatch) => {
       dispatch(stuffAdded());
     } else if (result.email) {
       dispatch(authSuccess(result));
+    } else {
+      dispatch(authFailed(result.message));
+    }
+  } catch (error) {
+    dispatch(authError(error));
+  }
+};
+
+export const handleResetPassword = (email,role) => async (dispatch) => {
+  dispatch(authRequest());
+  const fields = {email,role}
+  try {
+    let result = await fetch(`http://localhost:5000/api/auth/resetpassword`, {
+      method: "post",
+      body: JSON.stringify(fields),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    result = await result.json();
+    if (result.status === 200) {
+      dispatch(authSuccessGetMessage(result.message));
     } else {
       dispatch(authFailed(result.message));
     }
@@ -348,7 +371,6 @@ export const totalAttendanceOfStudent =(currentUser,id) => async(dispatch) => {
       }
     );
     result = await result.json();
-    console.log(result);
     dispatch(authSucessForStudentA(result));
   } catch (error) {
     dispatch(authError(error));
@@ -379,7 +401,6 @@ export const totalMarkOfStudent =(currentUser,id) => async(dispatch) => {
 
 // getting teachers of particular course details
 export const totalTeachersOfStudent = (fields,currentUser) => async(dispatch) => {
-  console.log(fields);
   dispatch(authRequest());
   try {
     let result = await fetch(
@@ -403,7 +424,6 @@ export const totalTeachersOfStudent = (fields,currentUser) => async(dispatch) =>
 
 // for sending notice
 export const sendNotice = (fields,currentUser) => async(dispatch) => {
-  console.log(fields);
   dispatch(authRequest());
   try {
     let result = await fetch(

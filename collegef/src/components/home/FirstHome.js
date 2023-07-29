@@ -9,7 +9,6 @@ const FirstHome = () => {
     const startHandler = (e) => {
         e.preventDefault();
         navigate("/decidehome")
-        console.log("kd");
     }
     return (
         <StyledContainer>
