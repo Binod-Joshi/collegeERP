@@ -266,6 +266,7 @@ router.post("/resetpassword", async (req, res) => {
           { new: true }
         );
       }
+      // http://localhost:3000
       console.log("setUserToken",setUserToken);
       if (setUserToken) {
         // const BASE_URL = process.env.BASE_URL;
@@ -273,7 +274,7 @@ router.post("/resetpassword", async (req, res) => {
           from: process.env.EMAIL,
           to: email,
           subject: "Sending Email for password reset.",
-          text: `This link valid for 2 minutes ${process.env.BASE_URL}/forgetpassword/${emailExist._id}/${setUserToken.verifytoken}/${role}`,
+          text: `This link valid for 2 minutes http://localhost:3000/forgetpassword/${emailExist._id}/${setUserToken.verifytoken}/${role}`,
         };
        console.log("mailOptions", mailOptions);
         transporter.sendMail(mailOptions, (error, info) => {
