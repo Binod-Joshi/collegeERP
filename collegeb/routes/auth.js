@@ -228,6 +228,10 @@ router.post("/loginTeacher", async (req, res) => {
 // for resetting the password
 router.post("/resetpassword", async (req, res) => {
   try {
+    console.log(process.env.BASE_URL);
+    const hell = process.env.BASE_URL;
+    console.log(hell);
+    console.log("k ca");
     const { email, role } = req.body;
     let emailExist;
     if (role === "Admin") {
@@ -262,9 +266,8 @@ router.post("/resetpassword", async (req, res) => {
           { new: true }
         );
       }
-      console.log(process.env.BASE_URL);
       if (setUserToken) {
-        const BASE_URL = process.env.BASE_URL;
+        // const BASE_URL = process.env.BASE_URL;
         const mailOptions = {
           from: process.env.EMAIL,
           to: email,
