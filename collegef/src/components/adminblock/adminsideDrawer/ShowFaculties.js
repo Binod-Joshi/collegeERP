@@ -113,8 +113,8 @@ const ShowStudents = () => {
           ))}
         </TableBody>
       </Table>
-      <PlaygroundSpeedDial actions={actions} />
     </TableContainer>}
+    <PlaygroundSpeedDial actions={actions} />
 
     {teachersList?.length === 0 || !teachersList ? (
   <h1 style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>

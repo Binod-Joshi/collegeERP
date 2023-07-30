@@ -133,8 +133,9 @@ const viewHandler = (e,id) => {
           ))}
         </TableBody>
       </Table>
-      <PlaygroundSpeedDial actions={actions} />
+      
     </TableContainer>}
+    <PlaygroundSpeedDial actions={actions} />
     {studentsList?.length === 0 || !studentsList ? (
   <h1 style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
     No students were added till now.

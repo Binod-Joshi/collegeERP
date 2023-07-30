@@ -112,8 +112,8 @@ const singleDeleteHandler = (id) => {
             ))}
           </TableBody>
         </Table>
-        <PlaygroundSpeedDial actions={actions} />
       </TableContainer>
+      <PlaygroundSpeedDial actions={actions} />
       </Box>}
 
       {deleteComponent && <DeleteConfirm role={role} selectedId={selectedId} />}

@@ -97,6 +97,7 @@ const ParticularCourseStudents = () => {
         </h2>
       </div>
       {(!loading && courseStudentsList )&& courseStudentsList?.length > 0 ? (
+        <>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead> 
@@ -129,8 +130,10 @@ const ParticularCourseStudents = () => {
               ))}
             </TableBody>
           </Table>
-          <PlaygroundSpeedDial actions={actions} />
+          
         </TableContainer>
+        <PlaygroundSpeedDial actions={actions} />
+        </>
       ) : (
         <div
           style={{

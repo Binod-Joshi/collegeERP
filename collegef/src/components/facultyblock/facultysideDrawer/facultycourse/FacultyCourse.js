@@ -101,7 +101,7 @@ const FacultyCourse = () => {
           <StyledTableCell align="right" style={{textAlign:"center"}}>
             {student.rollNo}
           </StyledTableCell>
-          <StyledTableCell align="right" style={{textAlign:"center"}}>
+          <StyledTableCell align="right" style={{textAlign:"center",display:"flex",flexDirection:"row"}}>
           <Button variant="contained" style={{marginRight:"5px"}} className="" onClick={(e) => viewHandler(student._id,student.username)}>
             View
           </Button>
@@ -116,7 +116,6 @@ const FacultyCourse = () => {
       ))}
     </TableBody>
   </Table>
-  {/* <PlaygroundSpeedDial actions={actions} /> */}
 </TableContainer>
 </>: <div className="courseDetail" style={{marginTop:"50px"}}> <h1>Loading...</h1></div>}
     </>
