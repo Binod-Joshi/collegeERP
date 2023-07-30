@@ -12,7 +12,6 @@ import { totalCourses } from "../../../store/courseRelated/courseHandle";
 import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteConfirm from "../../toast/DeleteConfirm";
 import PlaygroundSpeedDial from "../../toast/Speeddial";
-import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import { useNavigate } from "react-router-dom";
 import { setDeletedComponents } from "../../../store/userRelated/userHandle";
