@@ -19,9 +19,7 @@ import Error from "./components/toast/Error";
 
 function App() {
   const {currentUser} = useSelector((state) => state.user);
-  // console.log(process.env.BASE_URL_BACKEND);
-  const hwll = process.env.REACT_APP_BASE_URL_BACKEND;
-  console.log(hwll);
+
   return (
     <Router>
       {currentUser?.role === "Admin" && <AdminDrawer />}
