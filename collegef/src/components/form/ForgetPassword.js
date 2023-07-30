@@ -17,7 +17,7 @@ const ForgetPassword = () => {
 
     const validUser = async() => {
       try {
-        let result = await fetch(`${process.env.BASE_URL_BACKEND}/api/auth/forgetpassword/${id}/${token}/${role}`,{
+        let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/auth/forgetpassword/${id}/${token}/${role}`,{
         method:"get",
         headers:{
           "Content-Type":"application/json"
@@ -48,7 +48,7 @@ const ForgetPassword = () => {
           setLoader(true);
           let password = confirmPassword;
           try {
-            let result = await fetch(`${process.env.BASE_URL_BACKEND}/api/auth/sendingnew/${id}/${token}/${role}`,{
+            let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/auth/sendingnew/${id}/${token}/${role}`,{
             method:"post",
             body:JSON.stringify({password}),
             headers:{

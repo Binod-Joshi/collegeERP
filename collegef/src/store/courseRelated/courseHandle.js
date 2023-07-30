@@ -4,7 +4,7 @@ import { getError, getFailed, getRequest, getSuccess,getSucessC,getEmpty } from 
 export const totalCourses = (currentUser) => async(dispatch) => {
     dispatch(getRequest());
     try {
-        let result = await fetch(`${process.env.BASE_URL_BACKEND}/api/courses/getcourses`,{
+        let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/courses/getcourses`,{
             method:"get",
             headers:{
                 Authorization:`Bearer ${currentUser?.token}`,
@@ -28,7 +28,7 @@ export const deleteOneCourse = (currentUser, role, selectedId) => async (dispatc
     try {
       const requestBody = { selectedId }; // Create an object with the selectedId
   
-      let result = await fetch(`${process.env.BASE_URL_BACKEND}/api/${role}/deleteOne`, {
+      let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/${role}/deleteOne`, {
         method: "PUT",
         body: JSON.stringify(requestBody),
         headers: {

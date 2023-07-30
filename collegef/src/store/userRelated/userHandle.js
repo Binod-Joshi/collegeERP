@@ -26,7 +26,7 @@ export const loginUser = (fields, role) => async (dispatch) => {
   const { email, password } = fields;
   dispatch(authRequest());
   try {
-    let result = await fetch(`${process.env.BASE_URL_BACKEND}/api/auth/login${role}`, {
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/auth/login${role}`, {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {
@@ -48,7 +48,7 @@ export const registerUser = (fields, currentUser) => async (dispatch) => {
   const { role } = fields;
   dispatch(authRequest());
   try {
-    let result = await fetch(`${process.env.BASE_URL_BACKEND}/api/auth/register${role}`, {
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/auth/register${role}`, {
       method: "post",
       body: JSON.stringify(fields),
       headers: {
@@ -75,7 +75,7 @@ export const handleResetPassword = (email,role) => async (dispatch) => {
   dispatch(authRequest());
   const fields = {email,role}
   try {
-    let result = await fetch(`${process.env.BASE_URL_BACKEND}/api/auth/resetpassword`, {
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/auth/resetpassword`, {
       method: "post",
       body: JSON.stringify(fields),
       headers: {
@@ -101,7 +101,7 @@ export const logoutUser = () => async (dispatch) => {
 export const addCourse = (fields, currentUser) => async (dispatch) => {
   dispatch(authRequest());
   try {
-    let result = await fetch(`${process.env.BASE_URL_BACKEND}/api/courses/addcourse`, {
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/courses/addcourse`, {
       method: "post",
       body: JSON.stringify(fields),
       headers: {
@@ -124,7 +124,7 @@ export const addCourse = (fields, currentUser) => async (dispatch) => {
 export const ShowStudentsList = (currentUser) => async (dispatch) => {
   dispatch(authRequest());
   try {
-    let result = await fetch(`${process.env.BASE_URL_BACKEND}/api/students/getstudents`, {
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/students/getstudents`, {
       method: "get",
       headers: {
         Authorization: `Bearer ${currentUser?.token}`,
@@ -147,7 +147,7 @@ export const SingleCourseStudentDetail =
     dispatch(authRequest());
     try {
       let result = await fetch(
-        `${process.env.BASE_URL_BACKEND}/api/students/singlecoursesstudentlist`,
+        `${process.env.REACT_APP_BASE_URL_BACKEND}/api/students/singlecoursesstudentlist`,
         {
           method: "post",
           body: JSON.stringify(fields),
@@ -172,7 +172,7 @@ export const SingleCourseStudentDetail =
 export const ShowTeachersList = (currentUser) => async (dispatch) => {
   dispatch(authRequest());
   try {
-    let result = await fetch(`${process.env.BASE_URL_BACKEND}/api/teachers/getteachers`, {
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/teachers/getteachers`, {
       method: "get",
       headers: {
         Authorization: `Bearer ${currentUser?.token}`,
@@ -193,7 +193,7 @@ export const ShowTeachersList = (currentUser) => async (dispatch) => {
 export const deleteAll = (currentUser, role) => async (dispatch) => {
   dispatch(authRequest());
   try {
-    let result = await fetch(`${process.env.BASE_URL_BACKEND}/api/${role}/deleteAll`, {
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/${role}/deleteAll`, {
       method: "put",
       headers: {
         Authorization: `Bearer ${currentUser?.token}`,
@@ -226,7 +226,7 @@ export const deleteOne =
     try {
       const requestBody = { selectedId }; // Create an object with the selectedId
 
-      let result = await fetch(`${process.env.BASE_URL_BACKEND}/api/${role}/deleteOne`, {
+      let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/${role}/deleteOne`, {
         method: "PUT",
         body: JSON.stringify(requestBody),
         headers: {
@@ -269,7 +269,7 @@ export const takeAttendance = (fields, currentUser) => async (dispatch) => {
   dispatch(authRequest());
   try {
     let result = await fetch(
-      `${process.env.BASE_URL_BACKEND}/api/attendance/takeattendance`,
+      `${process.env.REACT_APP_BASE_URL_BACKEND}/api/attendance/takeattendance`,
       {
         method: "post",
         body: JSON.stringify(fields, currentUser),
@@ -292,7 +292,7 @@ export const getAttendance = (fields, currentUser) => async (dispatch) => {
   dispatch(authRequest());
   try {
     let result = await fetch(
-      `${process.env.BASE_URL_BACKEND}/api/attendance/getattendance`,
+      `${process.env.REACT_APP_BASE_URL_BACKEND}/api/attendance/getattendance`,
       {
         method: "post",
         body: JSON.stringify(fields, currentUser),
@@ -314,7 +314,7 @@ export const takeMark = (fields, currentUser) => async (dispatch) => {
   dispatch(authRequest());
   try {
     let result = await fetch(
-      `${process.env.BASE_URL_BACKEND}/api/mark/takemark`,
+      `${process.env.REACT_APP_BASE_URL_BACKEND}/api/mark/takemark`,
       {
         method: "post",
         body: JSON.stringify(fields, currentUser),
@@ -336,7 +336,7 @@ export const getMark = (fields, currentUser) => async (dispatch) => {
   dispatch(authRequest());
   try {
     let result = await fetch(
-      `${process.env.BASE_URL_BACKEND}/api/mark/getmark`,
+      `${process.env.REACT_APP_BASE_URL_BACKEND}/api/mark/getmark`,
       {
         method: "post",
         body: JSON.stringify(fields, currentUser),
@@ -362,7 +362,7 @@ export const totalAttendanceOfStudent =(currentUser,id) => async(dispatch) => {
   dispatch(authRequest());
   try {
     let result = await fetch(
-      `${process.env.BASE_URL_BACKEND}/api/attendanceofstudent/getattendance/${id}`,
+      `${process.env.REACT_APP_BASE_URL_BACKEND}/api/attendanceofstudent/getattendance/${id}`,
       {
         method: "get",
         headers: {
@@ -383,7 +383,7 @@ export const totalMarkOfStudent =(currentUser,id) => async(dispatch) => {
   dispatch(authRequest());
   try {
     let result = await fetch(
-      `${process.env.BASE_URL_BACKEND}/api/markofstudent/getmark/${id}`,
+      `${process.env.REACT_APP_BASE_URL_BACKEND}/api/markofstudent/getmark/${id}`,
       {
         method: "get",
         headers: {
@@ -404,7 +404,7 @@ export const totalTeachersOfStudent = (fields,currentUser) => async(dispatch) =>
   dispatch(authRequest());
   try {
     let result = await fetch(
-      `${process.env.BASE_URL_BACKEND}/api/students/getteachers`,
+      `${process.env.REACT_APP_BASE_URL_BACKEND}/api/students/getteachers`,
       {
         method: "post",
         body: JSON.stringify(fields),
@@ -427,7 +427,7 @@ export const sendNotice = (fields,currentUser) => async(dispatch) => {
   dispatch(authRequest());
   try {
     let result = await fetch(
-      `${process.env.BASE_URL_BACKEND}/api/notice/setnotice`,
+      `${process.env.REACT_APP_BASE_URL_BACKEND}/api/notice/setnotice`,
       {
         method: "post",
         body: JSON.stringify(fields),
@@ -449,7 +449,7 @@ export const gettingNotice = (collegename,currentUser) => async(dispatch) => {
   dispatch(authRequest());
   try {
     let result = await fetch(
-      `${process.env.BASE_URL_BACKEND}/api/notice/getnotice/${collegename}`,
+      `${process.env.REACT_APP_BASE_URL_BACKEND}/api/notice/getnotice/${collegename}`,
       {
         method: "get",
         headers: {
