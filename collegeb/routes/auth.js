@@ -262,6 +262,7 @@ router.post("/resetpassword", async (req, res) => {
           { new: true }
         );
       }
+      console.log(process.env.BASE_URL);
       if (setUserToken) {
         const BASE_URL = process.env.BASE_URL;
         const mailOptions = {
