@@ -75,7 +75,7 @@ export const handleResetPassword = (email,role) => async (dispatch) => {
   dispatch(authRequest());
   const fields = {email,role}
   try {
-    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/auth/resetpassword`, {
+    let result = await fetch(`http://localhost:5000/api/auth/resetpassword`, {
       method: "post",
       body: JSON.stringify(fields),
       headers: {
