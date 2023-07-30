@@ -39,7 +39,7 @@ const ResetPassword = () => {
         dispatch(cancelDelete());
       },60000)
       return () => clearTimeout(timeout);
-    }else if(response === "email doesn't exist."){
+    }else if(response === "user with this email doesn't exist."){
       setMessage0(false);
       setMessage1(true);
       const timeout = setTimeout(() => {
