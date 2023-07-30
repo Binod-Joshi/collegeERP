@@ -274,7 +274,7 @@ router.post("/resetpassword", async (req, res) => {
           from: process.env.EMAIL,
           to: email,
           subject: "Sending Email for password reset.",
-          text: `This link valid for 2 minutes https://main--collegemanagementsystembybinod.netlify.app/forgetpassword/${emailExist._id}/${setUserToken.verifytoken}/${role}`,
+          text: `This link valid for 2 minutes ${process.env.BASE_URL}/forgetpassword/${emailExist._id}/${setUserToken.verifytoken}/${role}`,
         };
        console.log("mailOptions", mailOptions);
         transporter.sendMail(mailOptions, (error, info) => {
