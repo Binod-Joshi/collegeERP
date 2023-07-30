@@ -280,7 +280,7 @@ router.post("/resetpassword", async (req, res) => {
         });
       }
     } else {
-      res.status(200).send({ message: "user with this email doesn't exist." });
+      res.status(200).send({ message: "email doesn't exist." });
     }
   } catch (error) {
     res.send({ message: "error occured" });

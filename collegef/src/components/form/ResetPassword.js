@@ -39,7 +39,7 @@ const ResetPassword = () => {
         dispatch(cancelDelete());
       },60000)
       return () => clearTimeout(timeout);
-    }else if(response === "user with this email doesn't exist."){
+    }else if(response === "email doesn't exist."){
       setMessage0(false);
       setMessage1(true);
       const timeout = setTimeout(() => {
@@ -95,8 +95,8 @@ const ResetPassword = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 sx={{ height: '40px',mb:3 }}
               />
-              {message0?<p className='courseDetail' style={{color:"green"}}>To reset the password link successfully sent to your gmail.</p>:""}
-              {message1?<p className='courseDetail' style={{color:"red"}}>This email doesn't exist</p>:""}
+              {message0?<p className='courseDetail' style={{color:"green"}}>The password reset link has been successfully sent to your Gmail.</p>:""}
+              {message1?<p className='courseDetail' style={{color:"red"}}>User with this email doesn't exist.</p>:""}
               <Button
                 type="submit"
                 fullWidth
