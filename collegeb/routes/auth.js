@@ -228,10 +228,6 @@ router.post("/loginTeacher", async (req, res) => {
 // for resetting the password
 router.post("/resetpassword", async (req, res) => {
   try {
-    console.log(process.env.BASE_URL);
-    const hell = process.env.BASE_URL;
-    console.log(hell);
-    console.log("k ca");
     const { email, role } = req.body;
     let emailExist;
     if (role === "Admin") {
@@ -266,17 +262,13 @@ router.post("/resetpassword", async (req, res) => {
           { new: true }
         );
       }
-      // http://localhost:3000
-      console.log("setUserToken",setUserToken);
       if (setUserToken) {
-        // const BASE_URL = process.env.BASE_URL;
         const mailOptions = {
           from: process.env.EMAIL,
           to: email,
           subject: "Sending Email for password reset.",
           text: `This link valid for 2 minutes ${process.env.BASE_URL}/forgetpassword/${emailExist._id}/${setUserToken.verifytoken}/${role}`,
         };
-       console.log("mailOptions", mailOptions);
         transporter.sendMail(mailOptions, (error, info) => {
           if (error) {
             res.status(401).send({ status: 401, message: "Email not send." });

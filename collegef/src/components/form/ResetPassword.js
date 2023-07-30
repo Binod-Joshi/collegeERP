@@ -16,7 +16,6 @@ const ResetPassword = () => {
   const dispatch = useDispatch();
 
   const {role} = useParams();
-  console.log(role);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +36,6 @@ const ResetPassword = () => {
       dispatch(cancelDelete());
       const timeout = setTimeout(() => {
         setMessage0(false);
-        console.log(response);
         dispatch(cancelDelete());
       },60000)
       return () => clearTimeout(timeout);
@@ -46,7 +44,6 @@ const ResetPassword = () => {
       setMessage1(true);
       const timeout = setTimeout(() => {
         setMessage1(false);
-        console.log(response);
         dispatch(cancelDelete());
       },2500)
       return () => clearTimeout(timeout);
@@ -55,7 +52,6 @@ const ResetPassword = () => {
   },[response]);
 
 
-  console.log(response);
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box
