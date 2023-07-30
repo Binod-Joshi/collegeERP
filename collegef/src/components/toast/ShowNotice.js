@@ -19,8 +19,6 @@ const ShowNotice = () => {
         dispatch(gettingNotice(collegeid,currentUser));
     },[])
 
-    console.log(noticeList);
-
   return (
     <div>
       <h1>Notice</h1>

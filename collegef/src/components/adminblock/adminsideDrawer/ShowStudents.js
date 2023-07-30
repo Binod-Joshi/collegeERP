@@ -42,7 +42,6 @@ const ShowStudents = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const role = "students"
-  console.log(studentsList);
 
   // Group the data by the combination of course, branch, year, semester, and section ans noOfStudents property
 
@@ -66,7 +65,6 @@ const ShowStudents = () => {
       noOfStudents,
     };
   });
-  console.log(groupedData);
 
   useEffect(() => {
     dispatch(ShowStudentsList(currentUser));

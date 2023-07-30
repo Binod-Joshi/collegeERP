@@ -29,13 +29,11 @@ const AdminHome = () => {
   const semester = currentUser?.semester;
   const section = currentUser?.section;
   let collegename = currentUser?.collegeid; 
-  console.log(collegename);
   const fields = {course, branch, year, semester, section,collegename};
 
   useEffect(() => {
     dispatch(SingleCourseStudentDetail(fields,currentUser));
   },[])
-  console.log(courseStudentsList);
 
   return (
     <>

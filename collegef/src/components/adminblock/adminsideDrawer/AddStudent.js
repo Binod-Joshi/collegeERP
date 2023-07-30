@@ -60,9 +60,6 @@ const AddStudent = () => {
   const uniqueSemseters = [...new Set(coursesList?.map((sem) => sem.semester))];
   const uniqueSections = [...new Set(coursesList?.map((sec) => sec.section))];
 
-  console.log(status, response);
-
-
   return (
     <div className="addStudent" style={{marginTop:'70px'}}>
       <div className="insideAddStudent">

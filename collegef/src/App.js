@@ -8,7 +8,6 @@ import {
 import Login from "./components/form/Login";
 import Home from "./components/home/Home";
 import Register from "./components/form/Register";
-import PrivateComponent from "./components/privateComponet/PrivateComponent";
 import AdminDrawer from "./components/adminblock/adminsideDrawer/AdminDrawer";
 import FacultyDrawer from "./components/facultyblock/facultysideDrawer/FacultyDrawer"
 import StudentSideDrawer from "./components/studentblock/studentsideDrawer/StudentSideDrawer";

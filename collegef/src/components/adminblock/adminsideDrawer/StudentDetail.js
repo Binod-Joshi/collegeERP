@@ -20,10 +20,6 @@ const StudentDetail = () => {
         dispatch(totalMarkOfStudent(currentUser,studentId))
       }, []);
 
-
-
-      console.log(loading);
-
   return (
     <> { !loading ?(
     <div>

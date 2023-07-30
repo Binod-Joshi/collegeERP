@@ -28,8 +28,6 @@ export default function SignIn() {
     
   };
 
-  console.log(status);
-
   React.useEffect(() => {
    if(status === "added" || response === "Course already exist"){
     const timeout =  setTimeout(() => {

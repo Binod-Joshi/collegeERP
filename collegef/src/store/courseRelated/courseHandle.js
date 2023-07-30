@@ -11,9 +11,7 @@ export const totalCourses = (currentUser) => async(dispatch) => {
             }
         });
       result = await result.json();
-      console.log(result);
       if(result[0]){
-          console.log(result);
           dispatch(getSuccess(result));
         }else{
             dispatch(getFailed("No Course were added till now."));
@@ -26,7 +24,6 @@ export const totalCourses = (currentUser) => async(dispatch) => {
   // deleteOne
 
 export const deleteOneCourse = (currentUser, role, selectedId) => async (dispatch) => {
-    console.log(selectedId, role);
     dispatch(getRequest());
     try {
       const requestBody = { selectedId }; // Create an object with the selectedId
@@ -41,10 +38,8 @@ export const deleteOneCourse = (currentUser, role, selectedId) => async (dispatc
       });
   
       result = await result.json();
-      console.log(result);
   
       if (result[0]) {
-        console.log(result);
         if(role === "courses"){
           dispatch(getSucessC(result));
         }
@@ -52,6 +47,5 @@ export const deleteOneCourse = (currentUser, role, selectedId) => async (dispatc
         dispatch(getEmpty());
       }
     } catch (error) {
-      console.log(error);
     }
   };

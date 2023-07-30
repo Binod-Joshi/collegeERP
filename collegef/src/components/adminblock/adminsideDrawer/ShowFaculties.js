@@ -49,7 +49,6 @@ const ShowStudents = () => {
     }
   }, [deleteComponent]);
 
-  console.log(teachersList)
 
   const actions = [
     {
@@ -69,8 +68,6 @@ const ShowStudents = () => {
     dispatch(setDeletedComponents());
     setSelectedId(id);
   }
-
-  console.log(loading);
 
   return (
     <>

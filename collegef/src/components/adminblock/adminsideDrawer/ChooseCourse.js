@@ -39,7 +39,6 @@ const ChooseCourse = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const role = useParams()?.role;
-    console.log(role);
     
     useEffect(() => {
         dispatch(totalCourses(currentUser));
@@ -55,11 +54,10 @@ const ChooseCourse = () => {
                 navigate(`/chooseaddstudent/${course?._id}`);
               }
             } catch (error) {
-              console.log(error)
+              console.log(error);
             }       
     }
 
-    console.log(loading);
 
   return (
     <>

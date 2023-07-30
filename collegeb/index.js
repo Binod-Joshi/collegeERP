@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express();
+const PORT = process.env.PORT || 5000
 
 dotenv.config();
 app.use(express.json({limit:"10mb"}));
@@ -41,4 +42,4 @@ app.use("/api/attendanceofstudent", attendance);
 app.use("/api/markofstudent", mark);
 app.use("/api/notice", notice);
 
-app.listen(5000);
+app.listen(PORT);

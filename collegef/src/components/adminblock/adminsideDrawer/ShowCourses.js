@@ -48,14 +48,6 @@ const ShowCourses = () => {
   const role = "courses"
 
   useEffect(() => {
-    if (response) {
-      console.log(response);
-    } else if (error) {
-      console.log(error);
-    }
-  }, []);
-
-  useEffect(() => {
     dispatch(totalCourses(currentUser));
     if(deleteComponent === false){
       setSelectedId("");
@@ -74,7 +66,6 @@ const singleDeleteHandler = (id) => {
   setSelectedId(id);
 }
 
-console.log(loading);
   return (
     <>
     {!loading? <>

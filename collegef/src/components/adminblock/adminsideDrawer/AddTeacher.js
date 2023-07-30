@@ -10,7 +10,6 @@ const AddStudent = () => {
   );
   const { coursesList} = useSelector((state) => state.course);
  
-  console.log(loading);
   //  const currentUserr = currentUser.currentUser; // used if const currentUser = useSelector((state) => state.user);
   const [loader, setLoader] = useState(false);
   const [addedTeacher, setAddedTeacher] = useState(false);
@@ -34,9 +33,7 @@ const AddStudent = () => {
       password,
     };
     e.preventDefault();
-    console.log(fields);
     dispatch(registerUser(fields, currentUser));
-    console.log(status);
   };
 
   useEffect(() => {
@@ -62,7 +59,6 @@ const AddStudent = () => {
 
     if (loading) {
       setLoader(true);
-      console.log(loading);
     }
   }, [status]);
 

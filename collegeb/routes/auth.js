@@ -263,11 +263,12 @@ router.post("/resetpassword", async (req, res) => {
         );
       }
       if (setUserToken) {
+        const BASE_URL = process.env.BASE_URL;
         const mailOptions = {
           from: process.env.EMAIL,
           to: email,
           subject: "Sending Email for password reset.",
-          text: `This link valid for 2 minutes http://localhost:3000/forgetpassword/${emailExist._id}/${setUserToken.verifytoken}/${role}`,
+          text: `This link valid for 2 minutes ${BASE_URL}/forgetpassword/${emailExist._id}/${setUserToken.verifytoken}/${role}`,
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
