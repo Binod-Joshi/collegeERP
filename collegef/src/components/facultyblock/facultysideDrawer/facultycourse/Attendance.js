@@ -20,7 +20,7 @@ import AddedSucessfull from "../../../toast/AdeddSucessfully"
 
 const defaultTheme = createTheme();
 const Attendance = () => {
-  const { currentUser, response,loading } = useSelector((state) => state.user);
+  const { currentUser, response, loading } = useSelector((state) => state.user);
   const [addedAttendance, setAddedAttandance] = useState(false);
   const params = useParams();
   const dispatch = useDispatch();

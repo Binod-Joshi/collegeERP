@@ -78,7 +78,7 @@ const AddStudent = () => {
             <input
               className="loginInput"
               type="text"
-              placeholder="Enter a student name.."
+              placeholder="Enter a teacher name.."
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -118,7 +118,7 @@ const AddStudent = () => {
             <input
               className="loginInput"
               type="text"
-              placeholder="Enter a student name.."
+              placeholder="Enter a subject name.."
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               required
@@ -130,7 +130,7 @@ const AddStudent = () => {
             <input
               className="loginInput"
               type="email"
-              placeholder="Enter a student email..."
+              placeholder="Enter a teacher email..."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -142,7 +142,7 @@ const AddStudent = () => {
             <input
               className="loginInput"
               type="password"
-              placeholder="create password for student..."
+              placeholder="create password for teacher..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required

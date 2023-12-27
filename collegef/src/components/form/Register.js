@@ -59,7 +59,6 @@ const Register = () => {
     const handleRegister = async(e) => {
       e.preventDefault();
       dispatch(registerUser(fields));
-      
     }
 
   return (

@@ -100,6 +100,7 @@ export const logoutUser = () => async (dispatch) => {
 // ADD COURSE
 export const addCourse = (fields, currentUser) => async (dispatch) => {
   dispatch(authRequest());
+  console.log(fields,currentUser);
   try {
     let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/courses/addcourse`, {
       method: "post",
