@@ -90,24 +90,24 @@ const ShowStudents = () => {
         </TableHead>
         <TableBody>
           {teachersList?.map((teacher) => (
-            <StyledTableRow key={teacher._id}>
+            <StyledTableRow key={teacher?._id}>
               <StyledTableCell component="th" scope="row">
-                {teacher.course?.course}
+                {teacher?.course?.course}
               </StyledTableCell>
-              <StyledTableCell align="right">{teacher.course?.branch}</StyledTableCell>
-              <StyledTableCell align="right">{teacher.course.year}</StyledTableCell>
+              <StyledTableCell align="right">{teacher?.course?.branch}</StyledTableCell>
+              <StyledTableCell align="right">{teacher?.course?.year}</StyledTableCell>
               <StyledTableCell align="right">
-                {teacher.course.semester}
+                {teacher?.course?.semester}
               </StyledTableCell>
-              <StyledTableCell align="right">{teacher.course.section}</StyledTableCell>
+              <StyledTableCell align="right">{teacher?.course?.section}</StyledTableCell>
               <StyledTableCell align="right">
-                {teacher.subject}
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                {teacher.username}
+                {teacher?.subject}
               </StyledTableCell>
               <StyledTableCell align="right">
-                <PersonRemoveIcon color="error" onClick={ (e) => singleDeleteHandler(teacher._id)} style={{cursor:"pointer",padding:"1px"}} className="singleDeleteIcon"/>
+                {teacher?.username}
+              </StyledTableCell>
+              <StyledTableCell align="right">
+                <PersonRemoveIcon color="error" onClick={ (e) => singleDeleteHandler(teacher?._id)} style={{cursor:"pointer",padding:"1px"}} className="singleDeleteIcon"/>
               </StyledTableCell>
             </StyledTableRow>
           ))}
