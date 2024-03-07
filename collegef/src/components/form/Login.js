@@ -65,7 +65,7 @@ const Login = ({role}) => {
         setLoaderGuest(true);
         dispatch(loginUser(fields,role));
       }else if(role === "Teacher"){
-        const email = "j@gmail.com";
+        const email = "s@gmail.com";
         const fields ={email,password};
         setLoaderGuest(true);
         dispatch(loginUser(fields,role));
