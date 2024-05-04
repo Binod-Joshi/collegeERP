@@ -15,7 +15,7 @@ The Blog App is a web-based application built using the MERN (MongoDB, Express.j
 
 - #### College management features:
   - Streamline college management, courses organization, and add students and faculty.
-  - Organize courses, track attendance, assess performance, and facilitate communication.
+  - Organize courses, track attendance, assess performance, and send notice.
   - Forget Pasword feature to recovery password.
 
 ## Technologies Used
